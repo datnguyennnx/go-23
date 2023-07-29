@@ -1,13 +1,16 @@
 package helper
 
-import "fmt"
+import (
+	"errors"
+	"strings"
+)
 
-func ValidCountryCode(countryCode string) bool {
+func ValidCountryCode(countryCode string) error {
+	countryCode = strings.ToUpper(countryCode)
 	switch countryCode {
 	case "VN", "US":
-		return true
+		return nil
 	default:
-		fmt.Printf("Invalid Country Code")
-		return false
+		return errors.New("invalid country code")
 	}
 }
